@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "AuctionHelper Monitor + Saved Calculator",
+  "version": "1.0.0",
+  "description": "Auction monitor with a calculator that stays saved until you clear it.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.liveauctioneers.com/*",
+    "https://partners.liveauctioneers.com/*",
+    "https://www.facebook.com/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.liveauctioneers.com/console/*",
+        "https://www.liveauctioneers.com/clerk-console/*",
+        "https://partners.liveauctioneers.com/console/*",
+        "https://partners.liveauctioneers.com/clerk-console/*",
+        "https://partners.liveauctioneers.com/copartners/clerk-console/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.facebook.com/*"
+      ],
+      "js": [
+        "facebook-content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/TIMER.mp3",
+        "assets/CLOCK.TTF"
+      ],
+      "matches": [
+        "https://www.liveauctioneers.com/*",
+        "https://partners.liveauctioneers.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

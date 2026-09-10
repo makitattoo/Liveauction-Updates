@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "LiveAuctioneers Price Monitor",
+  "version": "1.0",
+  "description": "Monitor auction prices and send to FastBid AHK app",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "background"
+  ],
+  "host_permissions": [
+    "https://www.liveauctioneers.com/*",
+    "https://partners.liveauctioneers.com/*",
+    "http://localhost:9999/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.liveauctioneers.com/console/*",
+        "https://www.liveauctioneers.com/clerk-console/*",
+        "https://partners.liveauctioneers.com/console/*",
+        "https://partners.liveauctioneers.com/clerk-console/*",
+        "https://partners.liveauctioneers.com/copartners/clerk-console/*"
+      ],
+      "js": ["fastbid_content_v2.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "fastbid_background_v2.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

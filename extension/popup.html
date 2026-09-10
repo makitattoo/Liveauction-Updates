@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #1F1F1F;
+      color: #FFFFFF;
+    }
+    h2 {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+      color: #00FF00;
+    }
+    .status {
+      background: #333;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00FF00;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .lot-id {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+    }
+    .info {
+      font-size: 11px;
+      color: #888;
+      margin-top: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    button.stop {
+      background: #f44336;
+    }
+    button.stop:hover {
+      background: #da190b;
+    }
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>🏛️ LiveAuctioneers Monitor</h2>
+  
+  <div class="status">
+    <div class="price" id="currentPrice">$0</div>
+    <div class="lot-id" id="lotId">Lot: -</div>
+  </div>
+  
+  <button id="toggleBtn">Stop Monitoring</button>
+  
+  <div class="info">
+    <p>Status: <span id="statusText">Active</span></p>
+    <p>Updates: <span id="updateCount">0</span></p>
+    <p>Last update: <span id="lastUpdate">-</span></p>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
