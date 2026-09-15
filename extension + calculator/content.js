@@ -600,13 +600,15 @@
 
     // Still apply competing bid logic
     const maxCompetingBidPrice = bidEstimateNum * 1.10;
-    // Only disable competing bid if the estimate is 100 or higher
-    const shouldDisableCompetingBid = bidEstimateNum >= 100 && currentAskNum >= maxCompetingBidPrice;
+    // ZERO TOLERANCE: Disable ALL buttons if price > 110% of bid estimate, regardless of estimate amount
+    const shouldDisableAllBtns = currentAskNum > maxCompetingBidPrice;
 
-    if (shouldDisableCompetingBid) {
+    if (shouldDisableAllBtns) {
+      // Over-bid protection: ALL buttons RED and disabled
+      disableButtons(soldBtn);
+      disableButtons(passBtn);
+      disableButtons(unsoldBtn);
       disableButtons(competingBidBtn);
-    } else {
-      enableButtons(competingBidBtn);
     }
   }
 
